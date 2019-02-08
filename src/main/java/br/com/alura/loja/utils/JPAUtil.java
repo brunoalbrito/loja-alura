@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 	
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("casadocodigo");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgres");
 	
 	public EntityManager getEntityManager() {
 		return emf.createEntityManager();

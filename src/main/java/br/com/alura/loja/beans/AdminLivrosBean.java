@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.alura.loja.models.Livro;
+import br.com.alura.loja.service.LivroService;
 import lombok.Data;
 
 @Data
@@ -14,12 +15,12 @@ public class AdminLivrosBean {
 
 	
 	@Inject
-//	private LivroService livroService;
+	private LivroService livroService;
 	 
 	private Livro livro = new Livro();
 
 	public void salvar() {
-//		livroService.save(livro);
+		livroService.save(livro);
 		System.out.println("Livros cadastrado: " + livro);
 	}
 }

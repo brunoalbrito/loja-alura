@@ -18,7 +18,7 @@
 	</div>
 	<div>
 		<h:outputLabel value="Número de Páginas"/>
-		<h:inputText value="#{adminLivrosBean.livro.numerdoPaginas}"/>
+		<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}"/>
 	</div>
 	<div>
 		<h:outputLabel value="Preço"/>
@@ -26,11 +26,10 @@
 	</div>
 	<div>
 		<h:outputLabel value="Autores"/>
-		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" >
+		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer">
 			<f:selectItems value="#{adminLivrosBean.autores}"
 				var="autor"
 				itemValue="#{autor.id}" itemLabel="#{autor.nome}"
-				converter="javax.faces.Integer"
 			/>
 		</h:selectManyListbox>
 	</div>

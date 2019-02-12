@@ -9,22 +9,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
 
 @Data
 @Entity
+@SequenceGenerator(name = "seq_livro", sequenceName = "pk_livro", allocationSize = 1)
 public class Livro {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "seq_livro", strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	
 	private String titulo;
 	
 	private String descricao;
 	
-	private Integer numerdoPaginas;
+	private Integer numeroPaginas;
 	
 	private BigDecimal preco;
 	

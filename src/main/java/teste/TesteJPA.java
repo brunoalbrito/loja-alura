@@ -14,7 +14,7 @@ public class TesteJPA {
 		Livro livro = new Livro();
 		livro.setTitulo("Livro de java");
 		livro.setDescricao("Livro alura");
-		livro.setNumerdoPaginas(256);
+		livro.setNumeroPaginas(256);
 		livro.setPreco(new BigDecimal(100));
 
 		em.getTransaction().begin();

@@ -1,5 +1,7 @@
 package br.com.alura.loja.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
@@ -15,6 +17,10 @@ public class LivroService {
 
 	public void save(Livro livro) {
 		repository.save(livro);
+	}
+
+	public List<Livro> listar() {
+		return repository.findAll();
 	}
 
 }

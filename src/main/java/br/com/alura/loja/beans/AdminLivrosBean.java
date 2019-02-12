@@ -37,6 +37,8 @@ public class AdminLivrosBean {
 			livro.getAutores().add(new Autor(autorId));
 		}
 		livroService.save(livro);
+		livro = new Livro();
+		autoresId = new ArrayList<>();
 		System.out.println("Livros cadastrado: " + livro);
 	}
 	

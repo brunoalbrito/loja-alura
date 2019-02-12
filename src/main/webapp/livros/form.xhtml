@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 
 <h:form>
@@ -22,6 +23,16 @@
 	<div>
 		<h:outputLabel value="Preço"/>
 		<h:inputText value="#{adminLivrosBean.livro.preco}" />
+	</div>
+	<div>
+		<h:outputLabel value="Autores"/>
+		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" >
+			<f:selectItems value="#{adminLivrosBean.autores}"
+				var="autor"
+				itemValue="#{autor.id}" itemLabel="#{autor.nome}"
+				converter="javax.faces.Integer"
+			/>
+		</h:selectManyListbox>
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
 </h:form>

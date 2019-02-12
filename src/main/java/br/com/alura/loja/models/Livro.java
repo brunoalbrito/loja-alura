@@ -1,11 +1,14 @@
 package br.com.alura.loja.models;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 
@@ -24,4 +27,7 @@ public class Livro {
 	private Integer numerdoPaginas;
 	
 	private BigDecimal preco;
+	
+	@ManyToMany
+	private List<Autor> autores = new ArrayList<>();
 }

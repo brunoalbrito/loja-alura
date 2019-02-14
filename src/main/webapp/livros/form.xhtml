@@ -9,30 +9,44 @@
 
 <h:form>
 	<div>
-		<h:outputLabel value="Título"/>
-		<h:inputText value="#{adminLivrosBean.livro.titulo}"/>
+		<h:outputLabel value="Título" />
+		<h:inputText id="titulo" value="#{adminLivrosBean.livro.titulo}"
+			required="true" />
+		<h:message for="titulo" />
 	</div>
 	<div>
-		<h:outputLabel value="Descrição"/>
-		<h:inputTextarea rows="4" cols="20" value="#{adminLivrosBean.livro.descricao}"/>
+		<h:outputLabel value="Descrição" />
+		<h:inputTextarea id="descricao" rows="4" cols="20"
+			value="#{adminLivrosBean.livro.descricao}" required="true" />
+		<h:message for="descricao" />
 	</div>
 	<div>
-		<h:outputLabel value="Número de Páginas"/>
-		<h:inputText value="#{adminLivrosBean.livro.numeroPaginas}"/>
+		<h:outputLabel value="Número de Páginas" />
+		<h:inputText id="numPagina"
+			value="#{adminLivrosBean.livro.numeroPaginas}" required="true" />
+		<h:message for="numPagina" />
 	</div>
 	<div>
-		<h:outputLabel value="Preço"/>
-		<h:inputText value="#{adminLivrosBean.livro.preco}" />
+		<h:outputLabel value="Preço" />
+		<h:inputText id="preco" value="#{adminLivrosBean.livro.preco}"
+			required="true" />
+		<h:message for="preco" />
 	</div>
 	<div>
-		<h:outputLabel value="Autores"/>
-		<h:selectManyListbox value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer">
-			<f:selectItems value="#{adminLivrosBean.autores}"
-				var="autor"
-				itemValue="#{autor.id}" itemLabel="#{autor.nome}"
-			/>
+		<h:outputLabel value="Autores" />
+		<h:selectManyListbox value="#{adminLivrosBean.livro.autores}"
+		 	converter="autorConverter"	id="autores">
+			<f:selectItems value="#{adminLivrosBean.autores}" var="autor"
+				itemValue="#{autor}" itemLabel="#{autor.nome}" />
 		</h:selectManyListbox>
+		<h:message for="autores" />
 	</div>
-	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}"/>
+	<div>
+		<h:outputLabel value="Data de Publicação" />
+		<h:inputText value="#{adminLivrosBean.livro.dataPublicacao}"
+			id="dataPublicacao" required="true" />
+		<h:message for="dataPublicacao" />
+	</div>
+	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}" />
 </h:form>
 </html>

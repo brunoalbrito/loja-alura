@@ -51,6 +51,8 @@ public class Livro {
 	@DecimalMin("20")
 	private BigDecimal preco;
 	
+	private String capaPath;
+	
 	@ManyToMany
 	@Size(min=1)
 	@NotNull

@@ -1,5 +1,6 @@
 package br.com.alura.loja.beans;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
+import br.com.alura.loja.infra.FileSaver;
 import br.com.alura.loja.models.Autor;
 import br.com.alura.loja.models.Livro;
 import br.com.alura.loja.service.AutorService;
@@ -35,12 +37,16 @@ public class AdminLivrosBean {
 	private FacesContext context;
 
 	private Part capaLivro;
-
+	
+	private String path = "imagem";
+	
 	public String salvar() throws IOException {
+		
+		FileSaver fileSaver = new FileSaver();
+		livro.setCapaPath(fileSaver.path(capaLivro, path));
+		
 		livroService.save(livro);
-
-		capaLivro.write("/home/bruno/loja-alura/imagem/" + capaLivro.getSubmittedFileName());
-
+		
 		context.getExternalContext().getFlash().setKeepMessages(true);
 
 		context.addMessage(null, new FacesMessage("Livro Cadastrado com sucesso"));

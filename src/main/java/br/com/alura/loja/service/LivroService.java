@@ -23,4 +23,8 @@ public class LivroService {
 		return repository.findAll();
 	}
 
+	public Livro buscaPorId(Integer id) {
+		return repository.findBy(id);
+	}
+
 }

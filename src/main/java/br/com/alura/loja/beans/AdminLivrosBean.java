@@ -1,7 +1,6 @@
 package br.com.alura.loja.beans;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -9,13 +8,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 
 import br.com.alura.loja.models.Autor;
 import br.com.alura.loja.models.Livro;
 import br.com.alura.loja.service.AutorService;
 import br.com.alura.loja.service.LivroService;
 import lombok.Data;
-
 
 @Data
 @Named
@@ -35,8 +34,12 @@ public class AdminLivrosBean {
 	@Inject
 	private FacesContext context;
 
-	public String salvar() {
+	private Part capaLivro;
+
+	public String salvar() throws IOException {
 		livroService.save(livro);
+
+		capaLivro.write("/home/bruno/loja-alura/imagem/" + capaLivro.getSubmittedFileName());
 
 		context.getExternalContext().getFlash().setKeepMessages(true);
 

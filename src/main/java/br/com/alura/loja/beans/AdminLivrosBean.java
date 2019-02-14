@@ -1,6 +1,5 @@
 package br.com.alura.loja.beans;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 

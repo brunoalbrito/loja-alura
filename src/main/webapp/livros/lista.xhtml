@@ -24,12 +24,20 @@
 	<h:column>
 		<f:facet name="header">Preço</f:facet>
 			#{livro.preco}
-		</h:column>
+	</h:column>
 	<h:column>
 		<f:facet name="header">Autores</f:facet>
 		<ui:repeat var="autor" value="#{livro.autores}">
 				#{autor.nome}
 			</ui:repeat>
+	</h:column>
+	<h:column>
+		<f:facet name="header">Capa Path</f:facet>
+			<a href="#{request.contextPath}/file/#{livro.capaPath}">#{livro.capaPath}</a>
+	</h:column>
+	<h:column>
+		<f:facet name="header">Capa Imagem</f:facet>
+			<img src="#{request.contextPath}/file/#{livro.capaPath}" width="25%" height="30%"/>
 	</h:column>
 </h:dataTable>
 </html>

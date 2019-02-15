@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
 public class FileSaver {
 
-	public static final String SERVER_PATH = "/home/bruno/loja-alura";
+	public static final String SERVER_PATH = "C:\\Users\\StartMeUp\\Documents\\home\\bruno\\loja-alura";
 
 	public String path(Part arquivo, String path) throws IOException {
 
@@ -30,6 +30,7 @@ public class FileSaver {
 			arquivo.write(savePath);
 			return relativePath;
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new RuntimeException();
 		}
 	}

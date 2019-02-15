@@ -23,10 +23,12 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @DynamicUpdate
+@EqualsAndHashCode
 @SequenceGenerator(name = "seq_livro", sequenceName = "pk_livro", allocationSize = 1)
 public class Livro {
 	
@@ -35,27 +37,34 @@ public class Livro {
 	private Integer id;
 	
 	@NotBlank
+	@EqualsAndHashCode.Exclude
 	private String titulo;
 	
 	@Lob
-	@Length(min=10)
 	@NotBlank
+	@Length(min=10)
+	@EqualsAndHashCode.Exclude
 	private String descricao;
 	
 	@DecimalMin("20")
+	@EqualsAndHashCode.Exclude
 	private Integer numeroPaginas;
 	
+	@EqualsAndHashCode.Exclude
 	@Temporal(TemporalType.DATE)
 	private Calendar dataPublicacao;
 	
 	@DecimalMin("20")
+	@EqualsAndHashCode.Exclude
 	private BigDecimal preco;
 	
+	@EqualsAndHashCode.Exclude
 	private String capaPath;
 	
+	@NotNull
 	@ManyToMany
 	@Size(min=1)
-	@NotNull
+	@EqualsAndHashCode.Exclude
 	private List<Autor> autores = new ArrayList<>();
 	
 }

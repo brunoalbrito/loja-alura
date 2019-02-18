@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.ws.rs.ext.ParamConverter.Lazy;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
@@ -62,7 +64,7 @@ public class Livro {
 	private String capaPath;
 	
 	@NotNull
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Size(min=1)
 	@EqualsAndHashCode.Exclude
 	private List<Autor> autores = new ArrayList<>();

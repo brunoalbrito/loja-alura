@@ -1,5 +1,8 @@
 package br.com.alura.loja.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
@@ -19,9 +22,12 @@ public class CarrinhoComprasBean {
 	@Inject
 	private CarrinhoCompras carrinho;
 
-	public String add(Integer id) {
-		Livro livro = service.buscaPorId(id);
+	private Livro livro;
+
+	public String adicionar(Integer id) {
+		livro = service.buscaPorId(id);
 		CarrinhoItem item = new CarrinhoItem();
+		item.setLivro(livro);
 		carrinho.add(item);
 
 		return "carrinho?faces-redirect=true";
